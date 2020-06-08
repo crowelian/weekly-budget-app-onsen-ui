@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="css/onsen-css-components.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+    <style>
+    
+        input:-internal-autofill-selected {
+            background-color: #000000 !important;
+        }
+    
+    </style>
 </head>
 
 <body>
@@ -85,7 +93,7 @@
             </ons-toolbar>
 
             <ons-tabbar swipeable position="auto">
-                <ons-tab page="tab1.html" label="Tab 1" icon="ion-home, material:md-home" badge="7" active>
+                <ons-tab page="tab1.html" label="Tab 1" icon="ion-home, material:md-home" badge="255" active>
                 </ons-tab>
                 <ons-tab page="tab2.html" label="Tab 2" icon="md-settings" active-icon="md-face">
                 </ons-tab>
@@ -146,23 +154,21 @@
             };
         } else if (page.id === 'page2') {
             page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
-            GetData();
+            GetAllData();
         }
     });
 
     // tabs code
     document.addEventListener('prechange', function(event) {
-        document.querySelector('ons-toolbar .center')
-            .innerHTML = event.tabItem.getAttribute('label');
+        //document.querySelector('ons-toolbar .center').innerHTML = event.tabItem.getAttribute('label');
     });
 
-    function GetData() {
+    function GetAllData() {
 
-        $.get("test_fetch.php", {
+        $.get("fetch_all_weeks.php", {
                 login: "true",
                 week: 1,
-                year: 2020,
-                userid: 3
+                year: 2020
             },
             function(data, status) {
 
@@ -171,9 +177,7 @@
                 //console.log("data: " + data);
 
                 let output = "<br><br>";
-                output += "Week: " + data.week_info.week_num + "<br>" +
-                    "week_id: " + data.week_info.week_id + "<br>" +
-                    "year: " + data.week_info.year;
+                output += data;
                 $('#showDataDiv').html(output);
 
 
