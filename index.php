@@ -7,8 +7,8 @@
     <!-- <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css"> -->
     <!-- <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css"> -->
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
-    <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="css/onsen-css-components.css">
+    <link id="theme" rel="stylesheet" href="css/dark-theme.css">
+    <link id="compos" rel="stylesheet" href="css/dark-onsen-css-components.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 
@@ -36,10 +36,10 @@
 
                 <div style="text-align: center; margin-top: 30px;">
                     <p>
-                        <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+                        <ons-input id="username" modifier="underbar large" placeholder="Username" float></ons-input>
                     </p>
                     <p>
-                        <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
+                        <ons-input id="password" modifier="underbar large" type="password" placeholder="Password" float></ons-input>
                     </p>
                     <p style="margin-top: 30px;">
                         <ons-button onclick="login()" modifier="large">Sign in</ons-button>
@@ -103,8 +103,51 @@
             <template id="tab1.html">
                 <ons-page id="Tab1">
                     <p style="text-align: center;">
-                        This is the first page.
+                        Settings:
                     </p>
+
+                    <ons-row style="margin: 16px;">
+                        <ons-col width="30%"><ons-switch id="dark-theme-switch-1" checked></ons-switch></ons-col>
+                        <ons-col width="70%">Dark Theme</ons-col>
+                    </ons-row>
+                    <ons-row style="margin: 16px;">
+                        <ons-col width="30%">THEME</ons-col>
+                        <ons-col width="70%">change theme</ons-col>
+                    </ons-row>
+                    <ons-row style="margin: 16px;">
+                        <ons-col width="30%">THEME</ons-col>
+                        <ons-col width="70%">change theme</ons-col>
+                    </ons-row>
+
+
+
+                <script>
+                // SETTINGS
+    $('#dark-theme-switch-1').click(function() {
+        
+        let darkSwitch = document.getElementById("dark-theme-switch-1");
+        
+
+        if (darkSwitch.checked) {
+            ons.notification.alert("Dark Theme on!");
+            
+            document.querySelector('#theme').setAttribute('href', 'css/dark-theme.css');
+            document.querySelector('#compos').setAttribute('href', 'css/dark-onsen-css-components.css');
+            
+        } else {
+            ons.notification.alert("Dark Theme OFF!");
+            
+            document.querySelector('#theme').setAttribute('href', 'css/theme.css');
+            document.querySelector('#compos').setAttribute('href', 'css/onsen-css-components.css');
+            
+        }
+
+    });
+                
+                </script>
+
+
+
                 </ons-page>
             </template>
 
@@ -145,13 +188,14 @@
                     }
                 });
             };
+            /*
             page.querySelector('#push-button').onclick = function() {
                 document.querySelector('#myNavigator').pushPage('page2.html', {
                     data: {
                         title: 'Get data page'
                     }
                 });
-            };
+            };*/
         } else if (page.id === 'page2') {
             page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
             GetAllData();
@@ -202,4 +246,8 @@
             ons.notification.alert('Incorrect username or password.');
         }
     };
+
+
+    
+    
 </script>
