@@ -60,8 +60,8 @@ if ($_GET['login'] == "true") {
                     '<ons-col width="50%"><ons-list-item>'.$user_1_sum * 0.1.'</ons-list-item></ons-col>' .
                     '<ons-col width="50%"><ons-list-item>'.$user_2_sum * 0.1.'</ons-list-item></ons-col>' .
                 '<ons-col width="100%"><ons-list-item>Hyväntekeväisyys</ons-list-item></ons-col>' .
-                    '<ons-col width="50%"><ons-list-item>'.$user_1_sum * 0.1.'</ons-list-item></ons-col>' .
-                    '<ons-col width="50%"><ons-list-item>'.$user_2_sum * 0.1.'</ons-list-item></ons-col>' .
+                    '<ons-col width="50%"><ons-list-item>'.$user_1_sum * 0.05.'</ons-list-item></ons-col>' .
+                    '<ons-col width="50%"><ons-list-item>'.$user_2_sum * 0.05.'</ons-list-item></ons-col>' .
                 '<ons-button onclick="functionHere()" modifier="large">Edit week</ons-button>' .
                 '</ons-row>' .
                 '</div>';
